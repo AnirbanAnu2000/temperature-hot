@@ -6,7 +6,8 @@ function getWeather() {
         city.innerText = 'Please enter your city name.';
     } else {
         const apiKey = '42b3774f1eef491b1c4f65e00376da9b';
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric
+        `;
         inputField.value = '';
         fetch(url)
             .then(res => res.json())
@@ -21,7 +22,7 @@ function displayWeatherForcust(temp) {
     city.innerText = temp.name;
     const dayTemp = document.getElementById('temp');
     // dayTemp.innerText = Math.round(temp.main.temp - 273);
-    const temInDeg = temp.main.temp - 273;
+    const temInDeg = temp.main.temp;
     dayTemp.innerText = temInDeg.toFixed(2);
     const desc = document.getElementById('desc');
     desc.innerText = temp.weather[0].main;
